@@ -23,10 +23,14 @@ def Gpio_Intent(status,room):
     GPIO.setmode(GPIO.BCM)    
     GPIO.setup(17,GPIO.OUT)
     if status in STATUSON:
-	GPIO.output(17,GPIO.HIGH)
+	sleep(1)
+	os.system("curl -d '' http://192.168.86.34:8060/keypress/home")
+	sleep(1)
 	return statement('turning {} lights'.format(status))
     elif status in STATUSOFF:
-        GPIO.output(17,GPIO.LOW)
+	sleep(1)
+	os.system("curl -d '' http://192.168.86.34:8060/keypress/home")
+	sleep(1)
         return statement('turning {} lights'.format(status))
     else:
         return statement('Sorry not possible.')
